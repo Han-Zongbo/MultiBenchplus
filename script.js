@@ -49,6 +49,46 @@
         button.addEventListener('click', copyCitation);
     }
 
+    function setupContributeModal() {
+        const modal = document.getElementById('contribute-modal');
+        if (!modal) return;
+
+        const openers = document.querySelectorAll('[data-open-contribute]');
+        const closeButton = document.getElementById('contribute-close-btn');
+
+        const openModal = () => {
+            modal.classList.add('is-open');
+            modal.setAttribute('aria-hidden', 'false');
+            document.body.classList.add('contribute-modal-open');
+        };
+
+        const closeModal = () => {
+            modal.classList.remove('is-open');
+            modal.setAttribute('aria-hidden', 'true');
+            document.body.classList.remove('contribute-modal-open');
+        };
+
+        openers.forEach(opener => {
+            opener.addEventListener('click', openModal);
+        });
+
+        if (closeButton) {
+            closeButton.addEventListener('click', closeModal);
+        }
+
+        modal.addEventListener('click', (event) => {
+            if (event.target === modal) {
+                closeModal();
+            }
+        });
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && modal.classList.contains('is-open')) {
+                closeModal();
+            }
+        });
+    }
+
     function setupDatasetAccordion() {
         const root = document.getElementById('dataset-accordion-root');
         if (!root) return;
@@ -70,6 +110,7 @@
     function initPage() {
         setupDatasetAccordion();
         setupCitationCopy();
+        setupContributeModal();
 
         const header = document.querySelector('.site-header');
         updateHeaderState(header);

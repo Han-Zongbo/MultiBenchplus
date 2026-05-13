@@ -112,6 +112,22 @@ nav {
     color: var(--primary-color);
 }
 
+.contribute-link {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font-weight: 500;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-family: inherit;
+    cursor: pointer;
+}
+
+.contribute-link:hover {
+    color: var(--primary-color);
+}
+
 .github-link {
     display: flex;
     align-items: center;
@@ -164,6 +180,7 @@ nav {
     display: flex;
     gap: 1rem;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 .btn {
@@ -199,6 +216,18 @@ nav {
 .btn-secondary:hover {
     border-color: var(--primary-color);
     background-color: var(--accent-mint);
+}
+
+.hero-contribute-btn {
+    white-space: nowrap;
+}
+
+.hero-contribute-note {
+    margin: 1rem auto 0;
+    max-width: 760px;
+    color: var(--text-muted);
+    font-size: 0.92rem;
+    line-height: 1.6;
 }
 
 /* Sections */
@@ -1481,6 +1510,138 @@ footer {
     font-weight: 600;
 }
 
+.sidebar-contribute-btn {
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    display: block;
+    padding: 0.42rem 0.58rem;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    transition: all 0.2s ease;
+    border-left: 2px solid transparent;
+    font-weight: 500;
+    line-height: 1.35;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.sidebar-contribute-btn:hover {
+    color: var(--primary-dark);
+    background: #f3f7fc;
+}
+
+.contribute-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(14, 23, 36, 0.54);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1200;
+    padding: 2rem;
+}
+
+.contribute-modal.is-open {
+    display: flex;
+}
+
+.contribute-modal-panel {
+    width: min(980px, 100%);
+    max-height: calc(100vh - 4rem);
+    overflow: auto;
+    background: #ffffff;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    box-shadow: 0 24px 48px rgba(15, 30, 54, 0.24);
+}
+
+.contribute-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.2rem 1.35rem;
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    background: #ffffff;
+}
+
+.contribute-modal-header h2 {
+    margin: 0;
+    font-size: 1.2rem;
+    color: var(--primary-dark);
+}
+
+.contribute-close-btn {
+    border: 1px solid var(--border-color);
+    background: #f6f9fd;
+    color: var(--primary-dark);
+    border-radius: 6px;
+    padding: 0.35rem 0.65rem;
+    font-size: 0.82rem;
+    cursor: pointer;
+}
+
+.contribute-close-btn:hover {
+    background: #edf4fb;
+}
+
+.contribute-modal-content {
+    padding: 1.35rem;
+}
+
+.contribute-modal-content > p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 1.05rem;
+}
+
+.contribute-section {
+    background: #fbfdff;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 0.92rem 1rem;
+    margin-bottom: 0.85rem;
+}
+
+.contribute-section h3 {
+    margin: 0 0 0.42rem;
+    font-size: 1rem;
+    color: var(--primary-dark);
+}
+
+.contribute-section ul,
+.contribute-section ol {
+    margin: 0;
+    padding-left: 1.15rem;
+    color: var(--text-main);
+}
+
+.contribute-section li {
+    margin-bottom: 0.32rem;
+    font-size: 0.9rem;
+    line-height: 1.58;
+}
+
+.contribute-section li:last-child {
+    margin-bottom: 0;
+}
+
+.contribute-actions {
+    margin-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+}
+
+body.contribute-modal-open {
+    overflow: hidden;
+}
+
 .main-content {
     flex: 1;
     min-width: 0;
@@ -1710,5 +1871,21 @@ footer {
 
     .table-scroll-wrapper {
         padding: 0.46rem 1rem 1.15rem;
+    }
+
+    .contribute-modal {
+        padding: 0.75rem;
+    }
+
+    .contribute-modal-panel {
+        max-height: calc(100vh - 1.5rem);
+    }
+
+    .contribute-modal-header h2 {
+        font-size: 1rem;
+    }
+
+    .contribute-section {
+        padding: 0.82rem 0.85rem;
     }
 }
