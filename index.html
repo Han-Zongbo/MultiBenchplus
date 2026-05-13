@@ -25,9 +25,9 @@
                 <a href="#usage">Usage</a>
                 <a href="#citation">Citation</a>
                 <button type="button" class="contribute-link" data-open-contribute>Contribute</button>
-                <a href="https://github.com/ravexly/MultiBenchplus" target="_blank" class="github-link">GitHub</a>
+                <a href="https://github.com/Han-Zongbo/MultiBenchplus" target="_blank" class="github-link"><svg class="github-mark" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.5-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.66 7.66 0 0 1 2-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"></path></svg>GitHub</a>
             </div>
-            <button class="mobile-menu-btn">Menu</button>
+            <button class="mobile-menu-btn"><i data-lucide="menu" class="icon"></i><span>Menu</span></button>
         </nav>
     </header>
 
@@ -69,11 +69,10 @@
             <p class="subtitle">A Unified and Comprehensive Multimodal Fusion Benchmarking
             </p>
             <div class="hero-buttons">
-                <a href="https://github.com/ravexly/MultiBenchplus" class="btn btn-primary" target="_blank"> View Code</a>
-                <a href="https://pan.baidu.com/s/11ITMTGO4KCnTLr05dnmThg?pwd=8rc9" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Explore Datasets</a>
-                <button type="button" class="btn btn-secondary hero-contribute-btn" data-open-contribute>Contributing Guide</button>
+                <a href="https://github.com/Han-Zongbo/MultiBenchplus" class="btn btn-primary" target="_blank"><i data-lucide="code-2" class="icon"></i><span>View Code</span></a>
+                <a href="https://pan.baidu.com/s/11ITMTGO4KCnTLr05dnmThg?pwd=8rc9" target="_blank" rel="noopener noreferrer" class="btn btn-secondary"><i data-lucide="database" class="icon"></i><span>Explore Datasets</span></a>
+                <button type="button" class="btn btn-secondary hero-contribute-btn" data-open-contribute><i data-lucide="heart-handshake" class="icon"></i><span>Contributing Guide</span></button>
             </div>
-            <p class="hero-contribute-note">Contributions are welcome, from bug fixes and docs to new benchmarks. See the Contributing Guide to get started.</p>
         </div>
         <div class="hero-bg-pattern"></div>
     </section>
@@ -83,26 +82,22 @@
             <h2 class="section-title">About the Project</h2>
             <div class="about-grid">
                 <div class="about-card">
-                    
-                    <h3>Unified Benchmark</h3>
+                    <h3><i data-lucide="workflow" class="icon"></i>Unified Benchmark</h3>
                     <p>Standardized evaluation across diverse multimodal tasks including emotion recognition,
                         healthcare, and remote sensing.</p>
                 </div>
                 <div class="about-card">
-                    
-                    <h3>Extensive Datasets</h3>
+                    <h3><i data-lucide="layers-3" class="icon"></i>Extensive Datasets</h3>
                     <p>Coverage of 37 datasets spanning 15+ modalities and 20+ predictive tasks across specialized
                         domains.</p>
                 </div>
                 <div class="about-card">
-                    
-                    <h3>Easy Integration</h3>
+                    <h3><i data-lucide="puzzle" class="icon"></i>Easy Integration</h3>
                     <p>Modular codebase designed for easy extension, allowing researchers to plug in new models and
                         datasets effortlessly.</p>
                 </div>
                 <div class="about-card">
-                    
-                    <h3>Advanced Metrics</h3>
+                    <h3><i data-lucide="activity" class="icon"></i>Advanced Metrics</h3>
                     <p>Task-specific evaluation with accuracy, macro-F1, AUPRC, and MSE, reported under a consistent
                         protocol with multiple random seeds.</p>
                 </div>
@@ -227,7 +222,7 @@
             <h2 class="section-title">Code</h2>
             <p class="section-intro">The implementation follows the benchmark design in the paper: unified data access,
                 modular encoders and fusion blocks, and a standardized training/evaluation workflow. Source code is
-                available on <a href="https://github.com/ravexly/MultiBenchplus" target="_blank"
+                available on <a href="https://github.com/Han-Zongbo/MultiBenchplus" target="_blank"
                     class="inline-link">GitHub</a>.</p>
 
             <div class="code-experience" id="code-overview">
@@ -352,70 +347,36 @@ python baseline.py</code></pre>
             </div>
 
             <div class="contribute-modal-content">
-                <p>We welcome benchmark extensions, bug fixes, and reproducibility improvements. The guidance below follows common open-source contribution patterns used in GitHub benchmark repositories.</p>
+                <p>We welcome focused benchmark contributions that improve coverage, quality, and reproducibility.</p>
 
                 <section class="contribute-section">
-                    <h3>1. Before You Start</h3>
+                    <h3>1. Scope</h3>
                     <ul>
-                        <li>Read <code>README.md</code> and <code>DATASET.md</code> to align with current benchmark scope and data conventions.</li>
-                        <li>Search existing <a href="https://github.com/ravexly/MultiBenchplus/issues" target="_blank" rel="noopener noreferrer">Issues</a> to avoid duplicate work.</li>
-                        <li>Open an Issue first for major changes (new benchmark protocol, large refactor, or new modality support).</li>
+                        <li>Dataset loaders, fusion methods, evaluation fixes, and reproducibility improvements are all welcome.</li>
+                        <li>Keep each PR focused on one research objective.</li>
                     </ul>
                 </section>
 
                 <section class="contribute-section">
-                    <h3>2. What Contributions Are Most Helpful</h3>
-                    <ul>
-                        <li>New dataset loaders with clear preprocessing, split logic, and modality alignment.</li>
-                        <li>New fusion baselines or encoder backbones integrated into the standardized evaluation pipeline.</li>
-                        <li>Bug fixes that improve correctness, stability, or reproducibility.</li>
-                        <li>Documentation upgrades (setup, troubleshooting, expected outputs, result interpretation).</li>
-                    </ul>
-                </section>
-
-                <section class="contribute-section">
-                    <h3>3. Recommended Workflow (GitHub Style)</h3>
+                    <h3>2. Workflow</h3>
                     <ol>
-                        <li>Fork the repository and create a focused branch (for example: <code>feat/new-fusion-method</code> or <code>fix/dataset-loader-bug</code>).</li>
-                        <li>Keep changes scoped to one purpose, with clear commit messages.</li>
-                        <li>Run relevant experiments or checks before opening a PR.</li>
-                        <li>Submit a Pull Request with motivation, change summary, and validation evidence.</li>
+                        <li>Fork the repository and create a branch with a clear name.</li>
+                        <li>Implement and validate your change with the relevant experiments.</li>
+                        <li>Open a PR with concise motivation, method, and results.</li>
                     </ol>
                 </section>
 
                 <section class="contribute-section">
-                    <h3>4. Pull Request Checklist</h3>
+                    <h3>3. PR Checklist</h3>
                     <ul>
-                        <li>Describe what changed and why it is needed.</li>
                         <li>List affected datasets, modalities, and tasks.</li>
-                        <li>Include reproducibility details: seed settings, hardware note, and key hyperparameters.</li>
-                        <li>Provide result comparison (before vs after, or baseline vs new method) when behavior changes.</li>
-                        <li>Update docs if behavior, setup, or expected output changed.</li>
-                    </ul>
-                </section>
-
-                <section class="contribute-section">
-                    <h3>5. Reporting Issues Clearly</h3>
-                    <ul>
-                        <li>Use a concise title with task/domain context.</li>
-                        <li>Include environment details (OS, Python version, core dependencies).</li>
-                        <li>Share minimal reproduction steps and complete error logs.</li>
-                        <li>State expected behavior and actual behavior.</li>
-                    </ul>
-                </section>
-
-                <section class="contribute-section">
-                    <h3>6. Benchmark Integrity Rules</h3>
-                    <ul>
-                        <li>Do not mix train/validation/test splits or alter official evaluation protocol without explicit disclosure.</li>
-                        <li>When adding results, document metric definitions and any task-specific preprocessing choices.</li>
-                        <li>Respect dataset licenses and access restrictions for all added data instructions or scripts.</li>
+                        <li>Share reproducibility setup (seed, key hyperparameters, hardware if relevant).</li>
+                        <li>Attach a short result comparison table when metrics change.</li>
                     </ul>
                 </section>
 
                 <div class="contribute-actions">
-                    <a href="https://github.com/ravexly/MultiBenchplus" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Open Repository</a>
-                    <a href="https://github.com/ravexly/MultiBenchplus/issues/new" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Open New Issue</a>
+                    <a href="https://github.com/Han-Zongbo/MultiBenchplus" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Open Repository</a>
                 </div>
             </div>
         </div>
@@ -423,11 +384,9 @@ python baseline.py</code></pre>
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 MultiBench++. Released under the <a href="https://github.com/ravexly/MultiBenchplus/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">MIT License</a>.</p>
+            <p>&copy; 2026 MultiBench++. Released under the <a href="https://github.com/Han-Zongbo/MultiBenchplus/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">MIT License</a>.</p>
             <div class="footer-links">
-                <a href="https://github.com/ravexly/MultiBenchplus">GitHub</a>
-                <span class="footer-divider"></span>
-                <a href="#">Hugging Face</a>
+                <a href="https://github.com/Han-Zongbo/MultiBenchplus"><svg class="github-mark" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.5-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.66 7.66 0 0 1 2-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"></path></svg>GitHub</a>
             </div>
         </div>
     </footer>
@@ -435,6 +394,7 @@ python baseline.py</code></pre>
     </div><!-- /.main-content -->
 
     <script src="datasets.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
     <script src="script.js"></script>
     <script src="leaderboard.js"></script>
 </body>

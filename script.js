@@ -9,14 +9,27 @@
     function setupMobileMenu(menuButton, navLinks) {
         if (!menuButton || !navLinks) return;
 
+        const iconEl = menuButton.querySelector('[data-lucide]');
+        const labelEl = menuButton.querySelector('span');
+
+        const syncMenuState = (isOpen) => {
+            if (labelEl) labelEl.textContent = isOpen ? 'Close' : 'Menu';
+            if (iconEl) {
+                iconEl.setAttribute('data-lucide', isOpen ? 'x' : 'menu');
+                if (window.lucide && typeof window.lucide.createIcons === 'function') {
+                    window.lucide.createIcons();
+                }
+            }
+        };
+
         const closeMenu = () => {
             navLinks.classList.remove('active');
-            menuButton.textContent = 'Menu';
+            syncMenuState(false);
         };
 
         menuButton.addEventListener('click', () => {
             navLinks.classList.toggle('active');
-            menuButton.textContent = navLinks.classList.contains('active') ? 'Close' : 'Menu';
+            syncMenuState(navLinks.classList.contains('active'));
         });
 
         document.querySelectorAll('.nav-links a').forEach(link => {
@@ -119,6 +132,19 @@
         const mobileMenuButton = document.querySelector('.mobile-menu-btn');
         const navLinks = document.querySelector('.nav-links');
         setupMobileMenu(mobileMenuButton, navLinks);
+
+        if (window.lucide && typeof window.lucide.createIcons === 'function') {
+            window.lucide.createIcons();
+            document.querySelectorAll('.github-link').forEach(link => {
+                if (!link.querySelector('svg')) {
+                    const icon = document.createElement('i');
+                    icon.className = 'icon';
+                    icon.setAttribute('data-lucide', 'github');
+                    link.insertAdjacentElement('afterbegin', icon);
+                }
+            });
+            window.lucide.createIcons();
+        }
     }
 
     if (document.readyState === 'loading') {
