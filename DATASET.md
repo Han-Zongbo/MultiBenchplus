@@ -238,3 +238,46 @@ This document outlines the datasets used, including their sources, content descr
 * **Link:** [Official Site](https://challenge.isic-archive.com/data/#milk10k)
 * **Feature Extraction:** Paired clinical and dermoscopic images encoded with CNNEncoder; tabular clinical metadata (age, sex, anatomical site, skin tone) encoded as normalized feature vectors.
 * **Data Splits:** Extracted sequentially: **3659** training (70%), **780** validation (15%), and **801** test (15%).
+### BioSNAP DTI
+* **Data Source and Content:** Drug–target interaction pairs for binary prediction; the experiment uses the processed unseen_drug split from the [MolTrans repository](https://github.com/kexinhuang12345/MolTrans).
+* **Feature Extraction:** Frozen ChemBERTa drug-SMILES and ESM-2 target-protein embeddings.
+* **Data Splits:** Drug-group-disjoint train/validation/test sets: **8,097 / 2,736 / 5,593** pairs.
+* **Loader:** dataset/BioSNAP/get_data.py defines BioSNAPDataset, reading each split from MultiBench100/pilot10h/feature_cache/BIOSNAP/{train,val,test}_fp16.pt (smiles, protein, labels).
+
+### MHEALTH
+* **Data Source and Content:** ECG and inertial/body-motion recordings for human activity recognition. [UCI Machine Learning Repository](https://archive.ics.uci.edu/dataset/319/mhealth+dataset).
+* **Feature Extraction:** Frozen MOMENT-Small features for two ECG channels and the remaining IMU channels. Non-zero activity segments are windowed at 512 samples with stride 256 without crossing activity boundaries.
+* **Data Splits:** Subject-disjoint train/validation/test split with **838 / 125 / 241** windows and 12 classes.
+* **Loader:** dataset/MHEALTH/get_data.py defines MHealthDataset, reading ecg, imu, and labels from split-specific feature_cache/MHEALTH/*_fp16.pt.
+
+### OPPORTUNITY
+* **Data Source and Content:** Wearable, object, and ambient sensor recordings for locomotion recognition. [UCI Machine Learning Repository](https://archive.ics.uci.edu/dataset/226/opportunity+activity+recognition).
+* **Feature Extraction:** Frozen MOMENT-Small embeddings from body-worn and object/environment channels. Four locomotion classes; 128-sample windows with stride 64; missing values imputed using train-only statistics.
+* **Data Splits:** S1/S2 train, S3 validation, S4 test; **2,714 / 1,231 / 904** windows.
+* **Loader:** dataset/OPPORTUNITY/get_data.py defines OpportunityDataset, reading body, object_env, and labels from feature_cache/OPPORTUNITY/*_fp16.pt.
+
+### MM-IMDb
+* **Data Source and Content:** Movie posters and plot summaries for 23-genre multi-label prediction. [Hugging Face dataset](https://huggingface.co/datasets/pranavmr/MM-IMDb).
+* **Feature Extraction:** Frozen CLIP ViT-B/32 poster and BERT-base plot embeddings. Identical poster SHA-256 hashes are kept within one split.
+* **Data Splits:** Fixed-seed poster-grouped split: **18,160 / 3,900 / 3,899** movies.
+* **Loader:** dataset/MM-IMDb/get_data.py defines MMIMDbDataset, reading image, text, and multi-hot labels from feature_cache/MM-IMDb/*_fp16.pt.
+
+### PLAsTiCC
+* **Data Source and Content:** Multi-band astronomical light curves and static object metadata for 14-class classification. [Official Zenodo record](https://zenodo.org/records/2539456); the experiment used the labeled [Hugging Face mirror](https://huggingface.co/datasets/MultimodalUniverse/plasticc), not unlabeled competition test shards.
+* **Feature Extraction:** Curves are phase-resampled to 512 points and encoded with frozen MOMENT-Small; static photo-z/redshift values remain a separate modality.
+* **Data Splits:** The 7,848 labeled mirror objects are split **5,493 / 1,177 / 1,178** (train/validation/test).
+* **Loader:** dataset/PLAsTiCC/get_data.py defines PlasticcDataset, reading lightcurve, static, and labels from feature_cache/PLAsTiCC/*_fp16.pt.
+
+### ChEBI-20
+* **Data Source and Content:** Molecule structures paired with natural-language descriptions for molecule–text retrieval. [MolT5 repository](https://github.com/blender-nlp/MolT5/tree/main/ChEBI-20_data).
+* **Feature Extraction:** Frozen MolT5-base molecular and BERT-base text embeddings. Official split membership is retained after duplicate-description removal.
+* **Data Splits:** **26,190 / 3,296 / 3,300** train/validation/test positive pairs. Training ChEBI20Dataset deterministically adds one negative description per positive pair; held-out retrieval ranking is evaluated using the adapter's sampled candidate protocol.
+* **Loader:** dataset/ChEBI-20/get_data.py defines ChEBI20Dataset, reading paired smiles and text embeddings from feature_cache/ChEBI-20/*_fp16.pt.
+
+### SmallMinesDS
+* **Data Source and Content:** Sentinel-2 optical imagery, Sentinel-1 SAR/DEM channels, and binary mine masks for pixel-level segmentation. [Author repository](https://github.com/DLR-MF-DAS/SmallMinesDS) and [Hugging Face mirror](https://huggingface.co/datasets/ellaampy/SmallMinesDS).
+* **Feature Extraction:** Keeps spatial tiles intact. The 13-channel TIFF is loaded per sample; train-only channel statistics from the split manifest are applied. Uses only the 2022 subset.
+* **Data Splits:** Official 2022 train/test split, with 15% of official training patches stratified by published class-percentage bin into validation: **1,267 / 224 / 644**.
+* **Loader:** dataset/SmallMinesDS/get_data.py defines SmallMinesDSDataset, reading paired TIFF/mask files and the saved split/normalization manifest from MultiBench100/pilot10h/.
+
+The six vector-feature loaders read their dataset-specific PyTorch split caches; SmallMinesDS reads spatial TIFF/mask pairs. These loaders do not download original datasets or run pretrained encoders.
